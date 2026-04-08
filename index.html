@@ -176,6 +176,7 @@ body {
 }
 .section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff30, #a78bfa30); }
 .section-title .icon.stable { background: linear-gradient(135deg, #34d39930, #4a9eff30); }
+.section-title .icon.btc { background: linear-gradient(135deg, #f7931a30, #f7931a20); }
 .section-badge {
   font-size: 11px;
   padding: 4px 12px;
@@ -455,6 +456,11 @@ body {
 <div class="date-nav-row">
   <div class="date-badge">📅 4月9日（UTC+8）</div>
   <nav class="quick-nav">
+    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
+      <span class="nav-icon">₿</span>
+      <span>BTC</span>
+    </button>
+    <div class="nav-divider"></div>
     <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
       <span class="nav-icon">📊</span>
       <span>RWA</span>
@@ -466,6 +472,70 @@ body {
     </button>
   </nav>
 </div>
+
+<!-- ==================== BTC 板块 ==================== -->
+<section class="section" id="btc-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="icon btc">₿</span>
+      BTC 持币数据
+    </h2>
+    <span class="section-badge">4月9日 更新</span>
+  </div>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
+    </div>
+    <div class="copy-content" id="btcCopy">CoinFound 数据：上市公司合计持有 1,234,852 枚比特币，总储备价值约 850.59 亿美元，占比比特币总量 6.17%
+ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
+其中，Strategy Inc（MSTR）持仓 766,970 枚 BTC，占上市公司总持仓 62.1%
+(来源: CoinFound)</div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">上市公司总数</div>
+      <div class="stat-value-row">
+        <span class="value">205</span>
+        <button class="btn-copy-sm" onclick="copyValue('205 家')">复制</button>
+      </div>
+      <div class="change" style="color:var(--text-muted)">持有 BTC 的机构</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">合计持有 BTC</div>
+      <div class="stat-value-row">
+        <span class="value">1,234,852</span>
+      </div>
+      <div class="change" style="color:var(--text-muted)">枚</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">总储备价值</div>
+      <div class="stat-value-row">
+        <span class="value">850.59</span>
+        <button class="btn-copy-sm" onclick="copyValue('850.59 亿美元')">复制</button>
+      </div>
+      <div class="change" style="color:var(--text-muted)">亿美元</div>
+    </div>
+  </div>
+
+  <!-- BTC 新闻 -->
+  <h3 class="subsection-title">市场动态（24h）</h3>
+  <ul class="news-list" id="btcNewsList"></ul>
+
+  <!-- BTC 总结 -->
+  <h3 class="subsection-title">市场总结</h3>
+  <div class="summary-container">
+    <div class="summary-header">
+      <span class="copy-label">BTC 市场总结</span>
+      <button class="btn-copy" onclick="copyText('btcSummary')">📋 复制全文</button>
+    </div>
+    <div class="summary-content structured-summary" id="btcSummary">今日全球上市公司合计持有 1,234,852 枚比特币，总储备价值约 850.59 亿美元，占比特币总量 6.17%。Strategy Inc 以 766,970 枚持仓占据绝对主导地位（占上市公司总量 62.1%），但其余 204 家机构的分散布局正在逐步稀释单一持币方的影响力。受美伊达成两周停火协议提振市场风险情绪、美债收益率回落带动资金流向风险资产影响，比特币重返 82,000 美元心理关口，机构买盘活跃。贝莱德 IBIT 持续吸引大规模净流入，美国比特币储备法案推进，叠加日本 SBI 申请比特币现货 ETF，机构采纳正从尝鲜走向战略配置。整体来看，上市公司持有 BTC 的赛道正从单一巨头主导走向多元机构协同布局，并未受到短期价格波动干扰，显示出长期配置的共识正在强化。</div>
+  </div>
+</section>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
@@ -622,7 +692,7 @@ ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
 <footer class="page-footer">
   <p class="meta">
     数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-    生成时间：2026-04-09 00:59 · 
+    生成时间：2026-04-09 01:12 · 
     Powered by Jarvis 🤖
   </p>
 </footer>

@@ -176,6 +176,7 @@ body {
 }
 .section-title .icon.rwa { background: linear-gradient(135deg, #4a9eff30, #a78bfa30); }
 .section-title .icon.stable { background: linear-gradient(135deg, #34d39930, #4a9eff30); }
+.section-title .icon.btc { background: linear-gradient(135deg, #f7931a30, #f7931a20); }
 .section-badge {
   font-size: 11px;
   padding: 4px 12px;
@@ -455,6 +456,11 @@ body {
 <div class="date-nav-row">
   <div class="date-badge">📅 {{today_cn}}（UTC+8）</div>
   <nav class="quick-nav">
+    <button class="quick-nav-btn" onclick="jumpToSection('btc-section')">
+      <span class="nav-icon">₿</span>
+      <span>BTC</span>
+    </button>
+    <div class="nav-divider"></div>
     <button class="quick-nav-btn" onclick="jumpToSection('rwa-section')">
       <span class="nav-icon">📊</span>
       <span>RWA</span>
@@ -466,6 +472,67 @@ body {
     </button>
   </nav>
 </div>
+
+<!-- ==================== BTC 板块 ==================== -->
+<section class="section" id="btc-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="icon btc">₿</span>
+      BTC 持币数据
+    </h2>
+    <span class="section-badge">{{today_cn}} 更新</span>
+  </div>
+
+  <!-- 复制模板 -->
+  <div class="copy-container">
+    <div class="copy-header">
+      <span class="copy-label">复制模板</span>
+      <button class="btn-copy" onclick="copyText('btcCopy')">📋 一键复制</button>
+    </div>
+    <div class="copy-content" id="btcCopy">{{btc_copy_text}}</div>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">上市公司总数</div>
+      <div class="stat-value-row">
+        <span class="value">{{btc_holder_count}}</span>
+        <button class="btn-copy-sm" onclick="copyValue('{{btc_holder_count}} 家')">复制</button>
+      </div>
+      <div class="change" style="color:var(--text-muted)">持有 BTC 的机构</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">合计持有 BTC</div>
+      <div class="stat-value-row">
+        <span class="value">{{btc_holding_count}}</span>
+      </div>
+      <div class="change" style="color:var(--text-muted)">枚</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">总储备价值</div>
+      <div class="stat-value-row">
+        <span class="value">{{btc_total_value}}</span>
+        <button class="btn-copy-sm" onclick="copyValue('{{btc_total_value}} 亿美元')">复制</button>
+      </div>
+      <div class="change" style="color:var(--text-muted)">亿美元</div>
+    </div>
+  </div>
+
+  <!-- BTC 新闻 -->
+  <h3 class="subsection-title">市场动态（24h）</h3>
+  <ul class="news-list" id="btcNewsList"></ul>
+
+  <!-- BTC 总结 -->
+  <h3 class="subsection-title">市场总结</h3>
+  <div class="summary-container">
+    <div class="summary-header">
+      <span class="copy-label">BTC 市场总结</span>
+      <button class="btn-copy" onclick="copyText('btcSummary')">📋 复制全文</button>
+    </div>
+    <div class="summary-content structured-summary" id="btcSummary">{{btc_summary}}</div>
+  </div>
+</section>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
