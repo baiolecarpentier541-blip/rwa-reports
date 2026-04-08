@@ -20,6 +20,9 @@
   --accent-purple: #a78bfa;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--bg-primary);
@@ -575,7 +578,7 @@ ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
 <footer class="page-footer">
   <p class="meta">
     数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-    生成时间：2026-04-09 00:09 · 
+    生成时间：2026-04-09 00:12 · 
     Powered by Jarvis 🤖
   </p>
 </footer>
@@ -623,9 +626,7 @@ function copyNews(text) {
 function scrollTo(id) {
   var el = document.getElementById(id);
   if (el) {
-    var offset = 20;
-    var top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
