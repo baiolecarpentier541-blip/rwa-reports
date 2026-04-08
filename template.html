@@ -387,6 +387,18 @@ body {
   color: var(--text-secondary);
   line-height: 1.9;
 }
+.structured-summary {
+  line-height: 2;
+}
+.structured-summary p {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-secondary);
+}
+.structured-summary p:last-child { margin-bottom: 0; }
 
 /* Footer */
 .page-footer {
@@ -523,9 +535,9 @@ body {
   <div class="summary-container">
     <div class="summary-header">
       <span class="copy-label">RWA 市场总结</span>
-      <button class="btn-copy" onclick="copyText('rwaSummary')">📋 复制</button>
+      <button class="btn-copy" onclick="copyText('rwaSummary')">📋 复制全文</button>
     </div>
-    <div class="summary-content" id="rwaSummary">{{rwa_summary}}</div>
+    <div class="summary-content structured-summary" id="rwaSummary">{{rwa_summary}}</div>
   </div>
 </section>
 
@@ -590,9 +602,9 @@ body {
   <div class="summary-container">
     <div class="summary-header">
       <span class="copy-label">稳定币市场总结</span>
-      <button class="btn-copy" onclick="copyText('scSummary')">📋 复制</button>
+      <button class="btn-copy" onclick="copyText('scSummary')">📋 复制全文</button>
     </div>
-    <div class="summary-content" id="scSummary">{{sc_summary}}</div>
+    <div class="summary-content structured-summary" id="scSummary">{{sc_summary}}</div>
   </div>
 </section>
 
