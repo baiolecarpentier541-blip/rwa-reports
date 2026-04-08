@@ -6,465 +6,129 @@
   <title>RWA 每日简报</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
-      background: #0f1117;
-      color: #e8e8e8;
-      min-height: 100vh;
-      padding: 24px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #2a2a3a;
-    }
-
-    header h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    header .date {
-      font-size: 14px;
-      color: #888;
-    }
-
-    .report-date-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #1a1d2e, #252840);
-      border: 1px solid #3a3a5c;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 15px;
-      color: #b8bcd8;
-      margin-bottom: 24px;
-    }
-
-    /* ===== 报告卡片 ===== */
-    .report-card {
-      background: #161822;
-      border: 1px solid #222438;
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 20px;
-    }
-
-    .report-card h2 {
-      font-size: 16px;
-      color: #7c8db5;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 18px;
-      font-weight: 500;
-    }
-
-    /* ===== RWA 数据区 ===== */
-    .market-summary {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .stat-box {
-      background: #0f1117;
-      border: 1px solid #222438;
-      border-radius: 10px;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .stat-box .label {
-      font-size: 11px;
-      color: #5a6280;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .stat-box .value {
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .stat-box .sub {
-      font-size: 11px;
-      color: #4caf50;
-      margin-top: 3px;
-    }
-
-    .stat-box .sub.neg { color: #f44336; }
-
-    /* ===== 品类表格 ===== */
-    .asset-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-
-    .asset-table th {
-      text-align: left;
-      padding: 8px 12px;
-      color: #5a6280;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #222438;
-      font-weight: 500;
-    }
-
-    .asset-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #1a1d2a;
-      color: #c8cce0;
-    }
-
-    .asset-table tr:last-child td { border-bottom: none; }
-
-    .asset-table td:nth-child(2) {
-      text-align: right;
-      font-weight: 600;
-      color: #fff;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .asset-table td:nth-child(3) {
-      text-align: right;
-      font-size: 12px;
-    }
-
-    .asset-table tr:hover td { background: #1a1d2e; }
-
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif; background: #0f1117; color: #e8e8e8; min-height: 100vh; padding: 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #2a2a3a; }
+    header h1 { font-size: 22px; font-weight: 600; color: #fff; }
+    header .date { font-size: 14px; color: #888; }
+    .report-date-badge { display: inline-block; background: linear-gradient(135deg, #1a1d2e, #252840); border: 1px solid #3a3a5c; border-radius: 8px; padding: 10px 18px; font-size: 15px; color: #b8bcd8; margin-bottom: 24px; }
+    .copy-hint { background: #1e2030; border: 1px solid #3a3a5c; border-radius: 8px; padding: 10px 16px; font-size: 12px; color: #7c8db5; margin-bottom: 20px; text-align: center; }
+    .report-card { background: #161822; border: 1px solid #222438; border-radius: 14px; padding: 24px 28px; margin-bottom: 20px; }
+    .report-card h2 { font-size: 13px; color: #7c8db5; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; font-weight: 500; }
+    .market-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    .stat-box { background: #0f1117; border: 1px solid #222438; border-radius: 10px; padding: 16px; text-align: center; }
+    .stat-box .label { font-size: 11px; color: #5a6280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .stat-box .value { font-size: 20px; font-weight: 700; color: #fff; }
+    .stat-box .sub { font-size: 11px; margin-top: 3px; }
     .positive { color: #4caf50; }
     .negative { color: #f44336; }
-
-    /* ===== 稳定币 ===== */
-    .stablecoin-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .coin-item {
-      background: #0f1117;
-      border: 1px solid #222438;
-      border-radius: 10px;
-      padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
+    .asset-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .asset-table th { text-align: left; padding: 8px 12px; color: #5a6280; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #222438; font-weight: 500; }
+    .asset-table td { padding: 10px 12px; border-bottom: 1px solid #1a1d2a; color: #c8cce0; }
+    .asset-table tr:last-child td { border-bottom: none; }
+    .asset-table td:nth-child(2) { text-align: right; font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; }
+    .asset-table td:nth-child(3) { text-align: right; font-size: 12px; }
+    .asset-table tr:hover td { background: #1a1d2e; }
+    .stablecoin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .coin-item { background: #0f1117; border: 1px solid #222438; border-radius: 10px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
     .coin-item .name { font-size: 14px; color: #c8cce0; font-weight: 500; }
     .coin-item .cap { font-size: 16px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-
-    /* ===== 新闻 ===== */
     .news-list { list-style: none; }
-
-    .news-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid #1e2130;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
+    .news-list li { padding: 12px 0; border-bottom: 1px solid #1e2130; display: flex; gap: 12px; align-items: flex-start; }
     .news-list li:last-child { border-bottom: none; }
-
-    .news-tag {
-      flex-shrink: 0;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
+    .news-tag { flex-shrink: 0; font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
     .tag-high { background: #2d1f1f; color: #f44336; border: 1px solid #5a2020; }
-    .tag-mid  { background: #2a2417; color: #ff9800; border: 1px solid #5a4510; }
-    .tag-low  { background: #1a2535; color: #64b5f6; border: 1px solid #1e4080; }
-
+    .tag-mid { background: #2a2417; color: #ff9800; border: 1px solid #5a4510; }
+    .tag-low { background: #1a2535; color: #64b5f6; border: 1px solid #1e4080; }
     .news-content { flex: 1; }
     .news-content .title { font-size: 14px; color: #d8dcf0; margin-bottom: 4px; line-height: 1.5; }
     .news-content .meta { font-size: 11px; color: #4a5070; }
     .news-content a { color: #5a8fd4; text-decoration: none; }
     .news-content a:hover { text-decoration: underline; }
-
-    /* ===== 总结 ===== */
-    .summary-box {
-      background: #0f1117;
-      border: 1px solid #222438;
-      border-left: 3px solid #5a8fd4;
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: 14px;
-      color: #b8bcd8;
-      line-height: 1.8;
-    }
-
-    /* ===== 底部 ===== */
-    footer {
-      margin-top: 28px;
-      text-align: center;
-      font-size: 11px;
-      color: #3a3f55;
-    }
-
+    .summary-box { background: #0f1117; border: 1px solid #222438; border-left: 3px solid #5a8fd4; border-radius: 10px; padding: 16px 20px; font-size: 14px; color: #b8bcd8; line-height: 1.8; }
+    footer { margin-top: 28px; text-align: center; font-size: 11px; color: #3a3f55; }
     footer a { color: #5a6280; }
-
-    /* ===== 复制提示 ===== */
-    .copy-hint {
-      background: #1e2030;
-      border: 1px solid #3a3a5c;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 12px;
-      color: #7c8db5;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* ===== 响应式 ===== */
-    @media (max-width: 768px) {
-      body { padding: 16px; }
-      .market-summary { grid-template-columns: repeat(2, 1fr); }
-      .stablecoin-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media print {
-      body { background: white; color: black; }
-      .stat-box, .coin-item, .report-card { border-color: #ccc; background: #f9f9f9; }
-      .news-tag { border-color: #999; }
-    }
+    @media (max-width: 768px) { body { padding: 16px; } .market-summary { grid-template-columns: repeat(2, 1fr); } .stablecoin-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
   <div class="container">
-
     <header>
       <h1>RWA 每日简报</h1>
       <span class="date">由 Jarvis 自动生成</span>
     </header>
-
-    <div class="report-date-badge" id="reportDate">📅 4月8日（UTC+8）</div>
-
+    <div class="report-date-badge" id="reportDate"></div>
     <div class="copy-hint">📋 所有内容均可直接选中复制，方便核对与发布</div>
 
-    <!-- ==================== RWA 品类 ==================== -->
     <div class="report-card">
-      <h2>RWA 品类数据（非稳定币）</h2>
+      <h2>RWA 品类数据（除稳定币外七大品类）</h2>
       <div class="market-summary">
-        <div class="stat-box">
-          <div class="label">RWA 总市值</div>
-          <div class="value" id="rwaTotal">—</div>
-          <div class="sub" id="rwaTotalChg">—</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">稳定币</div>
-          <div class="value" id="stableCap">—</div>
-          <div class="sub" id="stableCapChg">—</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">非稳定币</div>
-          <div class="value" id="nonStableCap">—</div>
-          <div class="sub" id="nonStableCapChg">—</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">持有人</div>
-          <div class="value" id="holders">—</div>
-          <div class="sub" id="holdersChg">—</div>
-        </div>
+        <div class="stat-box"><div class="label">RWA 总市值</div><div class="value" id="rwaTotal"></div><div class="sub" id="rwaTotalChg"></div></div>
+        <div class="stat-box"><div class="label">稳定币</div><div class="value" id="stableCap"></div><div class="sub" id="stableCapChg"></div></div>
+        <div class="stat-box"><div class="label">非稳定币</div><div class="value" id="nonStableCap"></div><div class="sub" id="nonStableCapChg"></div></div>
+        <div class="stat-box"><div class="label">持有人</div><div class="value" id="holders"></div><div class="sub" id="holdersChg"></div></div>
       </div>
-
       <table class="asset-table">
-        <thead>
-          <tr>
-            <th>品类</th>
-            <th>市值</th>
-            <th>7天涨跌</th>
-          </tr>
-        </thead>
-        <tbody id="assetBody">
-          <!-- 数据行由脚本填充 -->
-        </tbody>
+        <thead><tr><th>品类</th><th>市值</th><th>7天涨跌</th></tr></thead>
+        <tbody id="assetBody"></tbody>
       </table>
     </div>
 
-    <!-- ==================== 稳定币 ==================== -->
     <div class="report-card">
       <h2>稳定币市值</h2>
-      <div class="stablecoin-grid" id="stablecoinGrid">
-        <!-- 数据由脚本填充 -->
-      </div>
+      <div class="stablecoin-grid" id="stablecoinGrid"></div>
     </div>
 
-    <!-- ==================== 市场动态 ==================== -->
     <div class="report-card">
       <h2>市场动态（24h 内重要新闻）</h2>
-      <ul class="news-list" id="newsList">
-        <!-- 新闻由脚本填充 -->
-      </ul>
+      <ul class="news-list" id="newsList"></ul>
     </div>
 
-    <!-- ==================== 总结 ==================== -->
     <div class="report-card">
       <h2>市场总结</h2>
-      <div class="summary-box" id="summaryBox">
-        <!-- 总结由脚本填充 -->
-      </div>
+      <div class="summary-box" id="summaryBox"></div>
     </div>
 
     <footer>
       数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> &nbsp;|&nbsp;
-      生成时间：<span id="genTime">—</span> &nbsp;|&nbsp;
+      生成时间：<span id="genTime"></span> &nbsp;|&nbsp;
       Powered by Jarvis 🤖
     </footer>
-
   </div>
-
   <script>
-    // ====== 数据注入点 ======
-    // 以下数据由 Python 脚本在生成时直接写入 HTML 文件
-
-    const REPORT_DATA = {
-      date: "4月8日（UTC+8）",
-      genTime: new Date().toLocaleString("zh-CN", {timeZone: "Asia/Shanghai"}),
-
-      rwaTotal: "417.67 亿美元",
-      rwaTotalChg: "+2.21%",
-      stableCap: "322.75 亿美元",
-      stableCapChg: "+0.14%",
-      nonStableCap: "94.92 亿美元",
-      nonStableCapChg: "+9.96%",
-      holders: "2.83 亿",
-      holdersChg: "+0.35%",
-
-      assets: [
-        { name: "代币化私人信贷", nameCN: "私人信贷", cap: "39.65", unit: "亿美元", chg: "+21.81%", chgRaw: 0.2181 },
-        { name: "代币化公司债券", nameCN: "公司债券", cap: "27.22", unit: "亿美元", chg: "+2.08%", chgRaw: 0.0208 },
-        { name: "代币化美债",      nameCN: "美国国债", cap: "13.61", unit: "亿美元", chg: "+22.02%", chgRaw: 0.2202 },
-        { name: "代币化大宗商品",  nameCN: "大宗商品", cap: "7.24",  unit: "亿美元", chg: "-5.87%", chgRaw: -0.0587 },
-        { name: "代币化机构基金",  nameCN: "机构基金", cap: "3.51",  unit: "亿美元", chg: "+22.33%", chgRaw: 0.2233 },
-        { name: "代币化政府债券",  nameCN: "政府债券", cap: "1.86",  unit: "亿美元", chg: "+5.82%", chgRaw: 0.0582 },
-        { name: "代币化股票",      nameCN: "股票",     cap: "1.84",  unit: "亿美元", chg: "-7.31%", chgRaw: -0.0731 },
-      ],
-
-      stablecoins: [
-        { name: "USDT", cap: "196.36" },
-        { name: "USDC", cap: "77.47"  },
-        { name: "EURC", cap: "12.29"  },
-        { name: "DAI",  cap: "5.62"   },
-        { name: "PYUSD",cap: "3.99"  },
-        { name: "USDe", cap: "2.81"  },
-      ],
-
-      news: [
-        {
-          tag: "高",
-          tagClass: "tag-high",
-          title: "BTC 收复 $72,000，美伊停火引爆避险情绪",
-          source: "CoinDesk",
-          url: "https://www.coindesk.com/markets/2026/04/08/bitcoin-u-s-stock-futures-surge-on-a-two-week-u-s-iran-ceasefire/"
-        },
-        {
-          tag: "高",
-          tagClass: "tag-high",
-          title: "FDIC 批准稳定币与代币化存款重大监管框架",
-          source: "Forbes",
-          url: "https://www.forbes.com/sites/jasonbrett/2026/04/07/fdic-advances-major-framework-for-stablecoins-and-tokenized-deposits/"
-        },
-        {
-          tag: "高",
-          tagClass: "tag-high",
-          title: "Coinbase 获 OCC 有条件批准美国国家级信托银行牌照",
-          source: "FinTech Futures",
-          url: "https://www.fintechfutures.com/regulatory-actions/coinbase-national-trust-bank-charter-conditionally-approved-by-occ"
-        },
-        {
-          tag: "中",
-          tagClass: "tag-mid",
-          title: "XRP 跟随 BTC 涨 5%，但趋势反转尚未确认",
-          source: "CoinDesk",
-          url: "https://www.coindesk.com/markets/2026/04/08/xrp-zooms-5-on-bitcoin-strength-but-trend-reversal-still-unconfirmed/"
-        },
-        {
-          tag: "低",
-          tagClass: "tag-low",
-          title: "贝莱德：BTC 的真正问题不是量子计算，而是治理",
-          source: "CoinDesk",
-          url: "https://www.coindesk.com/tech/2026/04/07/grayscale-says-bitcoin-s-quantum-problem-is-governance-not-engineering/"
-        },
-      ],
-
-      summary: "RWA 总市值小幅上涨但内部分化显著。代币化私人信贷（7天涨 21.81%）和美国国债（30天涨 22.02%）是核心驱动力，合计吸金超 71 亿美元；稳定币占比最大（3229 亿美元）但涨幅仅 0.14%，加密 ETF（比特币 ETF 7天跌 74.63%）大幅拖累。整体资金从加密相关资产流向前述核心 RWA 赛道，趋势强度弱，市场情绪谨慎。"
-    };
-
-    // ====== 渲染函数 ======
+    const DATA = JSON.parse('{"date": "4月8日", "genTime": "2026-04-08 22:52", "rwaTotal": "417.67 亿美元", "rwaTotalChg": 0.0221, "stableCap": "322.75 亿美元", "stableCapChg": 0.0014, "nonStableCap": "94.92 亿美元", "nonStableCapChg": 0.0996, "holders": "283.49 亿", "holdersChg": 0.0035, "assets": [{"name": "Private Credit", "cap": "39.65 亿美元", "chg": 0.2181}, {"name": "Corp Bond", "cap": "27.22 亿美元", "chg": 0.0046}, {"name": "Treasuries", "cap": "13.61 亿美元", "chg": 0.0481}, {"name": "Commodities", "cap": "7.24 亿美元", "chg": 0.0218}, {"name": "Funds", "cap": "3.51 亿美元", "chg": 0.1986}, {"name": "Gov Bonds", "cap": "1.86 亿美元", "chg": 0.0005}, {"name": "Tokenized Equities", "cap": "1.84 亿美元", "chg": 0.008}], "stablecoins": [{"name": "USDT", "cap": "196.36"}, {"name": "USDC", "cap": "77.47"}, {"name": "EURC", "cap": "12.29"}, {"name": "DAI", "cap": "5.62"}, {"name": "PYUSD", "cap": "3.99"}], "news": [{"tag": "高", "tagClass": "tag-high", "title": "（等待新闻数据）", "source": "CoinFound", "url": "#"}], "summary": "RWA总市值417.67亿美元，7天+2.21%。Private Credit领涨+21.81%，Tokenized Equities表现最弱+0.80%。"}');
+    function pct(v) { return (v >= 0 ? '+' : '') + (v * 100).toFixed(2) + '%'; }
     function render() {
-      document.getElementById('reportDate').textContent = '📅 ' + REPORT_DATA.date;
-      document.getElementById('genTime').textContent = REPORT_DATA.genTime;
-      document.getElementById('rwaTotal').textContent = REPORT_DATA.rwaTotal;
-      document.getElementById('rwaTotalChg').textContent = REPORT_DATA.rwaTotalChg;
-      document.getElementById('rwaTotalChg').className = 'sub' + (REPORT_DATA.rwaTotalChg.startsWith('-') ? ' neg' : '');
-
-      document.getElementById('stableCap').textContent = REPORT_DATA.stableCap;
-      document.getElementById('stableCapChg').textContent = REPORT_DATA.stableCapChg;
-      document.getElementById('stableCapChg').className = 'sub' + (REPORT_DATA.stableCapChg.startsWith('-') ? ' neg' : '');
-
-      document.getElementById('nonStableCap').textContent = REPORT_DATA.nonStableCap;
-      document.getElementById('nonStableCapChg').textContent = REPORT_DATA.nonStableCapChg;
-      document.getElementById('nonStableCapChg').className = 'sub' + (REPORT_DATA.nonStableCapChg.startsWith('-') ? ' neg' : '');
-
-      document.getElementById('holders').textContent = REPORT_DATA.holders;
-      document.getElementById('holdersChg').textContent = REPORT_DATA.holdersChg;
-      document.getElementById('holdersChg').className = 'sub' + (REPORT_DATA.holdersChg.startsWith('-') ? ' neg' : '');
-
-      // 品类表格
-      const tbody = document.getElementById('assetBody');
-      tbody.innerHTML = REPORT_DATA.assets.map(a => {
-        const chgClass = a.chgRaw >= 0 ? 'positive' : 'negative';
-        return `<tr>
-          <td>${a.name}</td>
-          <td>${a.cap} ${a.unit}</td>
-          <td class="${chgClass}">${a.chg}</td>
-        </tr>`;
+      document.getElementById('reportDate').textContent = '📅 ' + DATA.date + '（UTC+8）';
+      document.getElementById('genTime').textContent = DATA.genTime;
+      var els = ['rwaTotal','stableCap','nonStableCap','holders'];
+      var chgs = ['rwaTotalChg','stableCapChg','nonStableCapChg','holdersChg'];
+      document.getElementById('rwaTotal').textContent = DATA.rwaTotal;
+      document.getElementById('rwaTotalChg').textContent = pct(DATA.rwaTotalChg);
+      document.getElementById('rwaTotalChg').className = 'sub ' + (DATA.rwaTotalChg>=0?'positive':'negative');
+      document.getElementById('stableCap').textContent = DATA.stableCap;
+      document.getElementById('stableCapChg').textContent = pct(DATA.stableCapChg);
+      document.getElementById('stableCapChg').className = 'sub ' + (DATA.stableCapChg>=0?'positive':'negative');
+      document.getElementById('nonStableCap').textContent = DATA.nonStableCap;
+      document.getElementById('nonStableCapChg').textContent = pct(DATA.nonStableCapChg);
+      document.getElementById('nonStableCapChg').className = 'sub ' + (DATA.nonStableCapChg>=0?'positive':'negative');
+      document.getElementById('holders').textContent = DATA.holders;
+      document.getElementById('holdersChg').textContent = pct(DATA.holdersChg);
+      document.getElementById('holdersChg').className = 'sub ' + (DATA.holdersChg>=0?'positive':'negative');
+      var body = document.getElementById('assetBody');
+      body.innerHTML = DATA.assets.map(function(a){
+        return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td class="'+(a.chg>=0?'positive':'negative')+'">'+pct(a.chg)+'</td></tr>';
       }).join('');
-
-      // 稳定币网格
-      const grid = document.getElementById('stablecoinGrid');
-      grid.innerHTML = REPORT_DATA.stablecoins.map(c => `
-        <div class="coin-item">
-          <span class="name">${c.name}</span>
-          <span class="cap">${c.cap} 亿美元</span>
-        </div>`).join('');
-
-      // 新闻列表
-      const newsList = document.getElementById('newsList');
-      newsList.innerHTML = REPORT_DATA.news.map(n => `
-        <li>
-          <span class="news-tag ${n.tagClass}">${n.tag}</span>
-          <div class="news-content">
-            <div class="title">${n.title}</div>
-            <div class="meta">来源：${n.source} &nbsp;|&nbsp; <a href="${n.url}" target="_blank">查看原文 ↗</a></div>
-          </div>
-        </li>`).join('');
-
-      // 总结
-      document.getElementById('summaryBox').textContent = REPORT_DATA.summary;
+      var grid = document.getElementById('stablecoinGrid');
+      grid.innerHTML = DATA.stablecoins.map(function(c){
+        return '<div class="coin-item"><span class="name">'+c.name+'</span><span class="cap">'+c.cap+' 亿美元</span></div>';
+      }).join('');
+      var nl = document.getElementById('newsList');
+      nl.innerHTML = DATA.news.map(function(n){
+        return '<li><span class="news-tag '+n.tagClass+'">'+n.tag+'</span><div class="news-content"><div class="title">'+n.title+'</div><div class="meta">来源：'+n.source+' &nbsp;|&nbsp; <a href="'+n.url+'" target="_blank">查看原文 ↗</a></div></div></li>';
+      }).join('');
+      document.getElementById('summaryBox').textContent = DATA.summary;
     }
-
     render();
   </script>
 </body>
