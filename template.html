@@ -57,8 +57,54 @@ body {
   padding: 12px 24px;
   font-size: 16px;
   color: var(--text-primary);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   font-weight: 500;
+}
+
+/* Quick Nav */
+.quick-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 32px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.quick-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.quick-nav-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.quick-nav-btn:active {
+  transform: scale(0.97);
+}
+.nav-icon {
+  font-size: 16px;
+}
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
 }
 
 /* Section */
@@ -361,6 +407,19 @@ body {
 
 <div class="date-badge">📅 {{today_cn}}（UTC+8）</div>
 
+<!-- 快速定位导航 -->
+<nav class="quick-nav">
+  <button class="quick-nav-btn" onclick="scrollTo('rwa-section')">
+    <span class="nav-icon">📊</span>
+    <span>RWA 品类</span>
+  </button>
+  <div class="nav-divider"></div>
+  <button class="quick-nav-btn" onclick="scrollTo('stablecoin-section')">
+    <span class="nav-icon">💵</span>
+    <span>稳定币</span>
+  </button>
+</nav>
+
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
   <div class="section-header">
@@ -542,6 +601,15 @@ function copyNews(text) {
   navigator.clipboard.writeText(text).then(function() {
     showToast('新闻已复制');
   });
+}
+
+function scrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var offset = 20;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
 }
 
 // Render RWA table

@@ -57,8 +57,54 @@ body {
   padding: 12px 24px;
   font-size: 16px;
   color: var(--text-primary);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   font-weight: 500;
+}
+
+/* Quick Nav */
+.quick-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 32px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.quick-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.quick-nav-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.quick-nav-btn:active {
+  transform: scale(0.97);
+}
+.nav-icon {
+  font-size: 16px;
+}
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
 }
 
 /* Section */
@@ -359,7 +405,20 @@ body {
   <p class="subtitle">代币化资产市场数据 · 由 Jarvis 自动生成</p>
 </header>
 
-<div class="date-badge">📅 4月8日（UTC+8）</div>
+<div class="date-badge">📅 4月9日（UTC+8）</div>
+
+<!-- 快速定位导航 -->
+<nav class="quick-nav">
+  <button class="quick-nav-btn" onclick="scrollTo('rwa-section')">
+    <span class="nav-icon">📊</span>
+    <span>RWA 品类</span>
+  </button>
+  <div class="nav-divider"></div>
+  <button class="quick-nav-btn" onclick="scrollTo('stablecoin-section')">
+    <span class="nav-icon">💵</span>
+    <span>稳定币</span>
+  </button>
+</nav>
 
 <!-- ==================== RWA 品类板块 ==================== -->
 <section class="section" id="rwa-section">
@@ -368,7 +427,7 @@ body {
       <span class="icon rwa">📊</span>
       RWA 品类数据
     </h2>
-    <span class="section-badge">4月8日 更新</span>
+    <span class="section-badge">4月9日 更新</span>
   </div>
 
   <!-- 复制模板 -->
@@ -378,7 +437,7 @@ body {
       <button class="btn-copy" onclick="copyText('rwaCopy')">📋 一键复制</button>
     </div>
     <div class="copy-content" id="rwaCopy">CoinFound 数据：RWA 市值为 949.24 亿美元
-ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
+ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
 ● 私人信贷市值：396.48 亿美元
 ● 公司债券市值：272.24 亿美元
 ● 美国国债市值：136.10 亿美元
@@ -444,7 +503,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
       <span class="icon stable">💵</span>
       稳定币数据
     </h2>
-    <span class="section-badge">4月8日 更新</span>
+    <span class="section-badge">4月9日 更新</span>
   </div>
 
   <!-- 复制模板 -->
@@ -454,7 +513,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
       <button class="btn-copy" onclick="copyText('scCopy')">📋 一键复制</button>
     </div>
     <div class="copy-content" id="scCopy">CoinFound 数据：稳定币总市值为 3227.49 亿美元
-ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
+ME News 消息，4月9日 (UTC+8)，据 CoinFound 数据显示：
 ● USDT市值：1963.60 亿美元
 ● USDC市值：774.70 亿美元
 ● DAI市值：52.30 亿美元
@@ -516,7 +575,7 @@ ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：
 <footer class="page-footer">
   <p class="meta">
     数据来源：<a href="https://coinfound.com" target="_blank">CoinFound</a> · 
-    生成时间：2026-04-08 23:57 · 
+    生成时间：2026-04-09 00:09 · 
     Powered by Jarvis 🤖
   </p>
 </footer>
@@ -559,6 +618,15 @@ function copyNews(text) {
   navigator.clipboard.writeText(text).then(function() {
     showToast('新闻已复制');
   });
+}
+
+function scrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var offset = 20;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
 }
 
 // Render RWA table
