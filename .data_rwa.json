@@ -1,0 +1,186 @@
+{
+  "today_cn": "4月8日",
+  "gen_time": "2026-04-08 23:09",
+  "rwa_total": 417673784898.0871,
+  "rwa_total_chg": 0.0221,
+  "stable_cap": 322749318197.8078,
+  "stable_chg": 0.0014,
+  "non_stable_cap": 94924466700.2793,
+  "non_stable_chg": 0.0996,
+  "holders": 283485501,
+  "holders_chg": 0.0035,
+  "rwa_assets": [
+    {
+      "type": "rwa",
+      "name": "Private Credit",
+      "nameCN": "代币化私人信贷",
+      "marketCap": 39648053991.5924,
+      "marketCapFlow7d": 7100076934.7824,
+      "marketCapFlow30d": 1463050715.2055,
+      "marketCapFlow90d": 5503198852.4277,
+      "marketCapChange7d": 0.2181,
+      "marketCapChange30d": 0.0383,
+      "holder": 0,
+      "holderChange30d": 0.0,
+      "count": 10,
+      "url": "rwa/private-credit"
+    },
+    {
+      "type": "rwa",
+      "name": "Corp Bond",
+      "nameCN": "代币化公司债券",
+      "marketCap": 27223688177.5856,
+      "marketCapFlow7d": 124598712.4326,
+      "marketCapFlow30d": 555252739.7005,
+      "marketCapFlow90d": 2497434420.2859,
+      "marketCapChange7d": 0.0046,
+      "marketCapChange30d": 0.0208,
+      "holder": 190785,
+      "holderChange30d": -0.0052,
+      "count": 2354,
+      "url": "rwa/corporate-bonds"
+    },
+    {
+      "type": "rwa",
+      "name": "Treasuries",
+      "nameCN": "代币化美债",
+      "marketCap": 13610111537.73,
+      "marketCapFlow7d": 624274298.2913,
+      "marketCapFlow30d": 2456304822.3715,
+      "marketCapFlow90d": 4331139868.643,
+      "marketCapChange7d": 0.0481,
+      "marketCapChange30d": 0.2202,
+      "holder": 60729,
+      "holderChange30d": -0.0046,
+      "count": 239,
+      "url": "rwa/treasuries"
+    },
+    {
+      "type": "rwa",
+      "name": "Commodities",
+      "nameCN": "代币化大宗商品",
+      "marketCap": 7237694272.6618,
+      "marketCapFlow7d": 154230433.9621,
+      "marketCapFlow30d": -451073292.5285,
+      "marketCapFlow90d": 2871966077.8851,
+      "marketCapChange7d": 0.0218,
+      "marketCapChange30d": -0.0587,
+      "holder": 212967,
+      "holderChange30d": 0.0462,
+      "count": 103,
+      "url": "rwa/commodities"
+    },
+    {
+      "type": "rwa",
+      "name": "Funds",
+      "nameCN": "代币化机构基金",
+      "marketCap": 3505815191.6594,
+      "marketCapFlow7d": 580853733.6323,
+      "marketCapFlow30d": 639988494.6995,
+      "marketCapFlow90d": 76045661.5759,
+      "marketCapChange7d": 0.1986,
+      "marketCapChange30d": 0.2233,
+      "holder": 126250,
+      "holderChange30d": -0.01,
+      "count": 70,
+      "url": "rwa/institutional-funds"
+    },
+    {
+      "type": "rwa",
+      "name": "Gov Bonds",
+      "nameCN": "代币化政府债券",
+      "marketCap": 1862960359.684,
+      "marketCapFlow7d": 983381.0014,
+      "marketCapFlow30d": 102496349.008,
+      "marketCapFlow90d": 420135093.062,
+      "marketCapChange7d": 0.0005,
+      "marketCapChange30d": 0.0582,
+      "holder": 9011,
+      "holderChange30d": 0.0196,
+      "count": 27,
+      "url": "rwa/government-bonds"
+    },
+    {
+      "type": "rwa",
+      "name": "Tokenized Equities",
+      "nameCN": "代币化股票",
+      "marketCap": 1836143169.3661,
+      "marketCapFlow7d": 14611169.3915,
+      "marketCapFlow30d": -144900161.076,
+      "marketCapFlow90d": 64865581.6266,
+      "marketCapChange7d": 0.008,
+      "marketCapChange30d": -0.0731,
+      "holder": 210400,
+      "holderChange30d": 0.1727,
+      "count": 2072,
+      "url": "rwa/xstocks"
+    }
+  ],
+  "sc_data": [
+    [
+      "USDT",
+      "196.36"
+    ],
+    [
+      "USDC",
+      "77.47"
+    ],
+    [
+      "USDS",
+      "2.81"
+    ],
+    [
+      "EURC",
+      "12.29"
+    ],
+    [
+      "USDe",
+      "2.81"
+    ],
+    [
+      "USD1",
+      "1.39"
+    ],
+    [
+      "PYUSD",
+      "3.99"
+    ]
+  ],
+  "assets_js": "[{\"name\": \"Private Credit\", \"cap\": \"39.65\", \"chg\": 0.2181}, {\"name\": \"Corp Bond\", \"cap\": \"27.22\", \"chg\": 0.0046}, {\"name\": \"Treasuries\", \"cap\": \"13.61\", \"chg\": 0.0481}, {\"name\": \"Commodities\", \"cap\": \"7.24\", \"chg\": 0.0218}, {\"name\": \"Funds\", \"cap\": \"3.51\", \"chg\": 0.1986}, {\"name\": \"Gov Bonds\", \"cap\": \"1.86\", \"chg\": 0.0005}, {\"name\": \"Tokenized Equities\", \"cap\": \"1.84\", \"chg\": 0.008}]",
+  "stables_js": "[{\"name\": \"USDT\", \"cap\": \"196.36\"}, {\"name\": \"USDC\", \"cap\": \"77.47\"}, {\"name\": \"USDS\", \"cap\": \"2.81\"}, {\"name\": \"EURC\", \"cap\": \"12.29\"}, {\"name\": \"USDe\", \"cap\": \"2.81\"}, {\"name\": \"USD1\", \"cap\": \"1.39\"}, {\"name\": \"PYUSD\", \"cap\": \"3.99\"}]",
+  "news_js": "[{\"tag\": \"高\", \"tagClass\": \"tag-high\", \"title\": \"BTC 收复 $72,000，美伊停火引爆避险情绪\", \"source\": \"CoinDesk\", \"url\": \"https://www.coindesk.com/markets/2026/04/08/bitcoin-u-s-stock-futures-surge-on-a-two-week-u-s-iran-ceasefire/\"}, {\"tag\": \"高\", \"tagClass\": \"tag-high\", \"title\": \"FDIC 批准稳定币与代币化存款重大监管框架\", \"source\": \"Forbes\", \"url\": \"https://www.forbes.com/sites/jasonbrett/2026/04/07/fdic-advances-major-framework-for-stablecoins-and-tokenized-deposits/\"}, {\"tag\": \"高\", \"tagClass\": \"tag-high\", \"title\": \"Coinbase 获 OCC 有条件批准美国国家级信托银行牌照\", \"source\": \"FinTech Futures\", \"url\": \"https://www.fintechfutures.com/regulatory-actions/coinbase-national-trust-bank-charter-conditionally-approved-by-occ\"}, {\"tag\": \"中\", \"tagClass\": \"tag-mid\", \"title\": \"XRP 跟随 BTC 涨 5%，趋势反转尚未确认\", \"source\": \"CoinDesk\", \"url\": \"https://www.coindesk.com/markets/2026/04/08/xrp-zooms-5-on-bitcoin-strength-but-trend-reversal-still-unconfirmed/\"}, {\"tag\": \"低\", \"tagClass\": \"tag-low\", \"title\": \"贝莱德：BTC 的真正问题不是量子计算，而是治理\", \"source\": \"CoinDesk\", \"url\": \"https://www.coindesk.com/tech/2026/04/07/grayscale-says-bitcoin-s-quantum-problem-is-governance-not-engineering/\"}]",
+  "summary": "RWA总市值418亿美元，7天+2.21%。Private Credit领涨+21.81%，Tokenized Equities表现最弱+0.80%。",
+  "rwa_lines": [
+    "CoinFound 数据：RWA 市值为 417.67 亿美元",
+    "ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：",
+    "● 私人信贷市值：39.65 亿美元",
+    "● 公司债券市值：27.22 亿美元",
+    "● 美国国债市值：13.61 亿美元",
+    "● 大宗商品市值：7.24 亿美元",
+    "● 机构基金市值：3.51 亿美元",
+    "● 政府债券市值：1.86 亿美元",
+    "● 代币化股票市值：1.84 亿美元"
+  ],
+  "sc_lines": [
+    "CoinFound 数据：稳定币总市值为 322.75 亿美元",
+    "ME News 消息，4月8日 (UTC+8)，据 CoinFound 数据显示：",
+    "● USDT市值：196.36 亿美元",
+    "● USDC市值：77.47 亿美元",
+    "● USDS市值：2.81 亿美元",
+    "● EURC市值：12.29 亿美元",
+    "● USDe市值：2.81 亿美元",
+    "● USD1市值：1.39 亿美元",
+    "● PYUSD市值：3.99 亿美元"
+  ],
+  "name_map": {
+    "Corp Bond": "公司债券",
+    "Commodities": "大宗商品",
+    "Gov Bonds": "政府债券",
+    "Private Credit": "私人信贷",
+    "Treasuries": "美国国债",
+    "Funds": "机构基金",
+    "Tokenized Equities": "代币化股票"
+  },
+  "b": "<function b at 0x100f4f530>",
+  "pct": "<function pct at 0x101066fb0>"
+}
