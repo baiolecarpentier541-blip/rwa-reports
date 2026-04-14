@@ -588,9 +588,9 @@ body {
     </div>
   </div>
 
-  <!-- 稳定币表格 -->
+  <!-- 稳定币表格（各链市值） -->
   <table class="data-table">
-    <thead><tr><th>币种</th><th>市值（亿美元）</th><th>占比</th></tr></thead>
+    <thead><tr><th>链</th><th>市值（亿美元）</th><th>24h 变化</th></tr></thead>
     <tbody id="scTableBody"></tbody>
   </table>
 
@@ -714,10 +714,11 @@ document.getElementById('rwaTableBody').innerHTML = RWA_ASSETS.map(function(a) {
   return '<tr><td>'+a.name+'</td><td>'+a.cap+'</td><td style="color:'+chgColor+'">'+pct(a.chg)+'</td></tr>';
 }).join('');
 
-// Render Stablecoin table
+// Render Stablecoin chain table (cap is in B USD, show as 亿美元)
 document.getElementById('scTableBody').innerHTML = STABLECOINS.map(function(c) {
-  var share = (parseFloat(c.cap) / STABLE_TOTAL * 100).toFixed(1) + '%';
-  return '<tr><td>'+c.name+'</td><td>'+c.cap+'</td><td style="color:var(--text-secondary)">'+share+'</td></tr>';
+  var cap_yi = (parseFloat(c.cap) * 10).toFixed(2); // B -> 亿（×10）
+  var chgColor = c.chg >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+  return '<tr><td>'+c.name+'</td><td>'+cap_yi+'</td><td style="color:'+chgColor+'">'+c.chg_str+'</td></tr>';
 }).join('');
 
 // Render news with copy button
