@@ -161,10 +161,15 @@ def search_rwa_news():
 
 def search_sc_news():
     """搜索稳定币相关新闻（优先 PANews，补充 Tavily 通用）"""
-    # 优先：从 panewslab 定向搜索
-    pn = tavily_news("稳定币 USDT USDC 市场 site:panewslab.com", max_results=5, time_range="day")
+    # 优先：从 panewslab 定向搜索（排除RWA周刊）
+    pn_raw = tavily_news("稳定币 USDT USDC 市场 site:panewslab.com", max_results=8, time_range="day")
+    # 过滤掉含RWA关键字的条目（RWA周刊混入稳定币搜索）
+    pn = [n for n in (pn_raw or []) if "RWA" not in n.get("title", "") and "rwa" not in n.get("title", "").lower()] if pn_raw else []
+    # 兜底：如果过滤后太少，放宽条件
+    if len(pn) < 3 and pn_raw:
+        pn = pn_raw[:3]
     # 补充：通用稳定币新闻
-    gen = tavily_news("stablecoin USDT USDC market regulation April 2026", max_results=5, time_range="day")
+    gen = tavily_news("stablecoin USDT USDC market regulation 2026", max_results=5, time_range="day")
     combined = []
     seen_urls = set()
     for n in (pn or []):
@@ -275,61 +280,73 @@ with open(os.path.join(REPO_DIR, ".tmp_sc_news.json")) as f:
 
 # ---- 市场总结（SKY模板，120字左右）----
 def make_rwa_summary(rwa_assets, non_stable_cap, non_stable_chg, rwa_news):
-    # 各品类7日涨跌简称
     short_name = {
         "Treasuries": "美债", "Private Credit": "私人信贷",
         "Corp Bond": "公司债券", "Commodities": "大宗商品",
         "Funds": "机构基金", "Tokenized Equities": "代币化股票",
         "Gov Bonds": "政府债券",
     }
+    # ---- 数据总结：Top3品类7日涨跌 ----
+    sorted_assets = sorted(rwa_assets, key=lambda x: x["marketCapChange7d"], reverse=True)[:3]
     segs = []
-    for a in rwa_assets:
+    for a in sorted_assets:
         n = short_name.get(a["name"], name_map.get(a["name"], a["name"]))
         segs.append(n + pct(a["marketCapChange7d"]))
     segs_str = "，".join(segs)
 
-    # 取最新新闻标题第一句
+    # ---- 数据结论：最强/最弱 ----
+    chg_values = [(a, a["marketCapChange7d"]) for a in rwa_assets]
+    top = max(chg_values, key=lambda x: x[1])
+    bot = min(chg_values, key=lambda x: x[1])
+    top_name = short_name.get(top[0]["name"], name_map.get(top[0]["name"], top[0]["name"]))
+    bot_name = short_name.get(bot[0]["name"], name_map.get(bot[0]["name"], bot[0]["name"]))
+    data_sent = top_name + "领涨升" + pct(top[1]) + "，" + bot_name + "走弱跌" + pct(abs(bot[1])) + "。"
+
+    # ---- 新闻总结：取Top1新闻第一句 ----
     news_title = rwa_news[0]["title"] if rwa_news else ""
     if news_title:
         sent = news_title.split("；")[0].split("。")[0]
         if len(sent) > 30:
             sent = sent[:27] + "…"
     else:
-        sent = "RWA赛道持续吸引机构布局"
+        sent = "RWA赛道持续吸引机构布局。"
 
     text = (
-        "RWA市值{:.2f}亿（7日{}）：{}。{}，RWA吸睛。"
-    ).format(non_stable_cap/1e8, pct(non_stable_chg), segs_str, sent)
-    if len(text) > 120:
-        text = text[:117] + "…"
+        "RWA市值今日{:.2f}亿，相对于昨日{}；{}。".format(non_stable_cap/1e8, pct(non_stable_chg), segs_str)
+        + data_sent + sent
+    )
     return text
 
 def make_sc_summary(stable_cap, stable_chg, chain_data, sc_news):
-    # 计算近1日变化（从 timeseries 比较）
-    latest_val = sum(float(c["cap"]) for c in chain_data) * 1e9  # B -> 原始值
-    # prev_total 用最新那条 timeseries 的总量（所有链合计）
+    # 计算近1日变化
+    latest_val = sum(float(c["cap"]) for c in chain_data) * 1e9
     prev_total = None
     if len(sc_ts_data) >= 2:
         prev_ts_item = sc_ts_data[-2]
         prev_total = sum(a["value"] for a in prev_ts_item["aggregates"])
     day_chg = (latest_val - prev_total) / prev_total if prev_total else 0
 
-    # 从新闻取一句话
+    # ---- 数据总结：近1日最强/最弱链 ----
+    if chain_data:
+        top_c = max(chain_data, key=lambda x: x["chg"])
+        bot_c = min(chain_data, key=lambda x: x["chg"])
+        data_sent = top_c["name"] + "领涨" + top_c["chg_str"] + "，" + bot_c["name"] + "走弱" + bot_c["chg_str"] + "。"
+    else:
+        data_sent = "ETH、TRON双寡头主导。"
+
+    # ---- 新闻总结：取Top1新闻第一句 ----
     news_title = sc_news[0]["title"] if sc_news else ""
     if news_title:
         sent = news_title.split("；")[0].split("。")[0]
-        if len(sent) > 25:
-            sent = sent[:22] + "…"
+        if len(sent) > 30:
+            sent = sent[:27] + "…"
     else:
-        sent = "稳定币市场保持稳定增长"
+        sent = "稳定币市场保持稳定增长。"
 
     text = (
-        "稳定币市场今日市值" + yi(stable_cap) + "亿美元，"
-        "近1日" + pct(day_chg) + "。"
-        + sent
+        "稳定币市场今日市值{}亿美元，相对于昨日{}。".format(yi(stable_cap), pct(day_chg))
+        + data_sent + sent
     )
-    if len(text) > 80:
-        text = text[:77] + "…"
     return text
 
 rwa_summary = make_rwa_summary(rwa_assets, non_stable_cap, non_stable_chg, rwa_news)
